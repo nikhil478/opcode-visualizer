@@ -1,17 +1,8 @@
-Version
-
-The first 4 bytes are the version number recorded in little endian:
-
+Version : The first 4 bytes are the version number recorded in little endian:
 01000000
 This indicates that the transaction follows the version 01 of the transaction evaluation format.
 
-As usage increases, it is expected this field will be used to signal a variety of different transaction templates which may each be processed by different subsets of the mining network.
-
-Quantity of inputs
-
-01
-
-This indicates that there is just 1 input being spent in this transaction.
+Quantity of inputs : This indicates that there is just 1 input being spent in this transaction.
 
 This value is a 4-byte integer in Little Endian format. This means that if a transaction has more than 0xFFFFFFFF outputs (approx 4.3 billion) those that are created at index locations outside the range are practically unspendable.
 
@@ -49,12 +40,11 @@ unlockScript
 
 47304402204e45e16932b8af514961a1d3a1a25fdf3f4f7732e9d624c6c61548ab5fb8cd410220181522ec8eca07de4860a4acdd12909d831cc56cbbac4622082221a8768d1d0901
 
-The unlockScript in this case is a single pushdata opcode (0x47) which pushes 71 bytes to the stack. These are a single bytevector containing the 70 byte long ECDSA signature in DER format concatenated with the 1 byte SIGHASH flag on the end. In some cases the DER signature is 71 bytes with an additional 1 byte for the SIGHASH flag. To gain a better understanding of the DER signature format and its application to Bitcoin, please consider doing the Bitcoin Primitives course on 'Digital Signatures'.
+The unlockScript in this case is a single pushdata opcode (0x47) which pushes 71 bytes to the stack. These are a single bytevector containing the 70 byte long ECDSA signature in DER format concatenated with the 1 byte SIGHASH flag on the end. In some cases the DER signature is 71 bytes with an additional 1 byte for the SIGHASH flag.
 
 When the evaluation engine validates this transaction, this signature is loaded onto the processing stack first, and then followed with the lockScript contained in the output being spent. In this case, the signature can be shown to have been generated with a private key that corresponds to the public key in the lockScript, meaning the coin could be spent.
 
 nSequence
-
 ffffffff
 
 The nSequence value can be used to generate payment channels which allow non-final transactions to be modified many times. In this case, the nSequence number is UINT_MAX which means the transaction was final when it was submitted to the network.
@@ -64,21 +54,19 @@ If the nSequence value is not UINT_MAX then the transaction cannot be processed 
 Number of Outputs
 02
 
-This tells us that there are two outputs in this transaction.
-
-his value is a Variable Integer (VarInt) of 1-9 bytes meaning that a transaction can have 1.8 x 10^19 outputs. Remember though, only the first 4.3 billion can be referenced as inputs.
+his value is a Variable Integer (VarInt) of 1-9 bytes meaning that a transaction can have 1.8 x 10^19 outputs. 
 
 A VarInt is most commonly a 1 byte hexadecimal value:
 
 However, if the VarInt is going to be greater than 0xfc (so the number you’re trying to express won’t fit inside of two hexadecimal characters) then you can expand the field in the following way:
 
-No. of Inputs	Example	Description
+No. of Inputs
 <= 0xfc	12	 
 0xfc < qty < = 0xffff	fd 1234	Prefix with fd, and the next 2 bytes is the VarInt (in little-endian).
 0xffff < qty <= 0xffffffff	fe 12345678	Prefix with fe, and the next 4 bytes is the VarInt (in little-endian).
 0xffffffff < qty <= 0xffffffffffffffff	ff 1234567890abcdef	Prefix with ff, and the next 8 bytes is the VarInt (in little-endian).
-Output 1 Breakdown
 
+Output 1 Breakdown
 
 This is the output in which Satoshi sends Hal Finney his Bitcoin.
 

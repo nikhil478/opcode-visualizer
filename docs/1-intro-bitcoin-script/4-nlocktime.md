@@ -1,0 +1,1 @@
+When a transaction's nLockTime is in the future, it can be considered non-final if there are also inputs with non-final nSequence values. for an example if the nLocktime is set to 0x00000000 meaning that the field references block 0 and the transaction is final at any time.
