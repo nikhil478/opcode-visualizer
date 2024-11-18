@@ -37,7 +37,7 @@ OP_ENDIF
 
 When using OP_NOTIF, if the operations performed in <expression> leave a zero-value item at the top of the stack, then the code in <False action> will be executed. Otherwise the script will jump to the opcode immediately after OP_ENDIF.
 
-Bitcoin grammar rules require that every OP_IF / OP_NOTIF must have a corresponding OP_ENDIF. Transactions that try to create outputs that do not adhere to this scripting rule are considered invalid and will not be accepted by the network.
+Bitcoin grammar rules require that every OP_IF / OP_NOTIF must have a corresponding OP_ENDIF.
 
 Using OP_ELSE
 

@@ -46,7 +46,7 @@ OP_CHECKMULTISIGVERIFY performs an ECDSA signature check consuming up to i items
 
 OP_1* <signature_1> <signature_3> OP_2 <public_key 1> <public_key 2> <public_key 3> OP_3 OP_CHECKMULTISIGVERIFY
 
-*Note that the first item pushed using OP_1 is called the junk item. This will be covered in detail in chapter 5
+*Note that the first item pushed using OP_1 is called the junk item.
 
 In this example, n = 2 and m = 3 so there are 2(signatures) + 3(pubkeys) + 2(indicators) + 1(junk item) = 8 items consumed from the stack. To spend an output with this type of multisignature script, the user must submit a junk item and 2 valid signatures corresponding to 2 of the public keys in the list, in the correct order.
 

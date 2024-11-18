@@ -1,7 +1,4 @@
-Introduction
-
-The Bitcoin script language is comprised of 186 Opcodes, which together enable a full range of functionality, allowing for an evaluation script for any digital information or conditions to be built and used to govern transactional activity on the Bitcoin network. In this chapter, we will look at all of the opcodes available and their purpose within the scripting language.
-
+The Bitcoin script language is comprised of 186 Opcodes, which together enable a full range of functionality, allowing for an evaluation script for any digital information or conditions to be built and used to govern transactional activity on the Bitcoin network.
 
 Each opcode is listed with a list of the input values is requires, the output it generates, and a description of the function it executes on the stack.
 

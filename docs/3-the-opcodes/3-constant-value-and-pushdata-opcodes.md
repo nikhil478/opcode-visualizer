@@ -13,10 +13,8 @@ OP_0, OP_FALSE	Nothing.	Null item	An empty array of bytes is pushed onto the sta
 OP_1NEGATE	Nothing.	-1	The number -1 (0x81) is pushed onto the stack.
 OP_1, OP_TRUE	Nothing.	1	The number 1 (0x01) is pushed onto the stack.
 OP_2-OP_16	Nothing.	2-16	A 1-byte integer of the value in the word name (0x02 - 0x0F) is pushed onto the stack.
+
 Opcodes like these can be used to feed inputs to other functions, making it simple and easy to configure operations such as multi-signature checks for groups of 16 people or less.
-
-
-Example:
 
 OP_2 <pubkey_1> <pubkey_2> <pubkey_3> OP_3 OP_CHECKMULTISIG
 
@@ -85,8 +83,6 @@ OP_PUSHDATA1 0x64 <100B data item> is valid Bitcoin script but OP_PUSHDATA2 0x64
 Pushdata Opcode Notation In Script
 
 It is important to note that most Bitcoin script interpreters or programming tools will insert the correct pushdata opcode for the data item being pushed, respecting the minimal encoding rule. Typically the user will need only to provide the data item itself.
-
-Examples shown in subsequent pages/chapters will exclude pushdata opcodes from the script to simplify the expressions and allow you to focus on the opcodes being discuss
 
 Input Script Opcode Rule
 
