@@ -2,7 +2,6 @@ The Stacks
 
 There are 2 stacks that are accessible to users from within Bitcoin Script programs, the main stack and alt stack. The main stack is where all opcodes take their operands from, and place the results on to (where needed). For example, the code OP_ADD performs addition of the two topmost stack items, removing them from the stack and replacing them with a single data item representing the outcome.
 
-
 There are a series of opcodes that are for the direct manipulation of data items that are on the stack, allowing the programmer to duplicate, change the order of, or remove entirely data items from the main stack. These opcodes and the rest are covered in the the next chapter. 
 
 Data items on the stack

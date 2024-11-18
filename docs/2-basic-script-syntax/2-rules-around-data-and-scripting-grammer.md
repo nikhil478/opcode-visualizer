@@ -14,33 +14,23 @@ Any data item can be interpreted as a boolean value. If the data item consists e
 
 A data item can be interpreted as a numeric value. The numeric value is encoded in a byte sequence using little-endian notation. When script items are processed using opcodes that perform mathematical functions, the node will treat any byte sequence of up to 750,000 bytes length as a numeric value, allowing for 'bignum' calculations to be performed in script.
 
-Formal Grammar for Bitcoin Script
-
 The Formal Grammar for Bitcoin Script is defined as part of the Bitcoin protocol. This contains the full set of approved opcodes and their exact spelling and function.
 
-Script components
-
 The complete script consists of two sections, the unlockScript (scriptSig) and the lockScript (scriptPubKey). The lockScript is from the transaction output that is being spent, while the unlockScript is included in the transaction input that is spending the output.
-
 
 Valid opcodes for unlockScript elements
 
 Current consensus rules state that a unlockScript (scriptSig) can only contain the first 96 opcodes, which allow constants and data to be pushed onto the stack. This requirement is a part of Validity of Script Consensus Rule, defined later.
 
-
 IF loops
 
 A branching operator (OP_IF or OP_NOTIF) must have a matching OP_ENDIF.
 
-
 An OP_ELSE can only be included between a branching operator and OP_ENDIF pair. There can only be at most one OP_ELSE between a branching operator and an OP_ENDIF.
-
 
 OP_RETURN
 
 OP_RETURN may appear at any location in a valid script. The functionality of OP_RETURN has been restored and is defined later in the section on opcodes. Grammatically, any bytes after an OP_RETURN that is not in a branch block are not evaluated and there are no grammatical requirements for those bytes.
-
-Insert Chapter 2 animation 5
 
 Note that disabled operations are part of this grammar. A disabled operation is grammatically correct but will produce a failure if executed.
 
@@ -56,7 +46,6 @@ Numeric Value Size Rule
 
 For a byte sequence to validly represent a numeric value, the length of the byte sequence must be less than or equal to 750,000 bytes. A byte sequence that is larger than this is a valid byte sequence but is not a valid numeric value.
 
-
 Note that while some operations require parameters to be valid numeric values, they may produce byte sequences which are not valid numeric values (for example, OP_MUL may produce a byte sequence which is too large to validly represent a numeric value).
 
 Clean Stack Rule
@@ -67,4 +56,4 @@ The clean stack rule is a later addition to the node client system and is not a 
 
 Other rules
 
-There are a multitude of other rules that define usage of the Bitcoin network, which are both set protocol level rules that cannot change, and flexible, consensus generated usage limits that give node operators the flexibility to create a flexible and useful environment for network users. For a deeper insight into these rules, please consider doing Introduction to Bitcoin Infrastructure.
+There are a multitude of other rules that define usage of the Bitcoin network, which are both set protocol level rules that cannot change, and flexible, consensus generated usage limits that give node operators the flexibility to create a flexible and useful environment for network users.
